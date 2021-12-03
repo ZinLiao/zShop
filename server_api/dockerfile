@@ -1,0 +1,33 @@
+FROM node:14.18
+
+COPY ./ /home/server_api
+
+WORKDIR /home/server_api
+
+RUN npm install
+
+RUN npm run build
+
+WORKDIR /home/server_api
+
+RUN npm ci --production
+
+ENV PORT=3333
+ENV HOST=0.0.0.0
+ENV NODE_ENV=production
+ENV APP_KEY=Z8R24kgwFKPW3J3M-dXShRTU4pEjBdny
+ENV DRIVE_DISK=local
+ENV REDIS_CONNECTION=local
+ENV REDIS_HOST=redis
+ENV REDIS_PORT=6379
+ENV REDIS_PASSWORD=123456
+ENV DB_CONNECTION=mysql
+ENV MYSQL_HOST=mysql
+ENV MYSQL_PORT=3306
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=123456
+ENV MYSQL_DB_NAME=shop
+
+EXPOSE 3333
+
+CMD ["node", "./build/server.js", ">> ./app.log"]

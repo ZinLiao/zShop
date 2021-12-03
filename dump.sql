@@ -14,8 +14,9 @@
  Date: 28/11/2021 20:42:09
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+create database `shop` default character set utf8 collate utf8_general_ci;
+ 
+use shop;
 
 -- ----------------------------
 -- Table structure for orders
